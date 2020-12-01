@@ -69,6 +69,13 @@ Normalement, la fonction de coût est non lineaire au regard des poids synaptique
 
 * Vitesse d'apprentissage : Learning Rate à la valeur de 0.001.
 
+## Description de l'application
+
+L'application devra avoir plusieurs onglets (Front en javaFx).
+
+L'application nous permettra de creer un modele (Create Model), charger les donnees (Load data) necessaire pour  entrainer le model, entrainer le modele (Train Model) 80% du dataset, evaluer le modele (Evaluate Model) 20% du dataset, faire les predictions (Predict) et enfin la sauvegarde du model (save Model) et le chargement du model (load Model).
+
+
 
 # Initialisation du projet
 
