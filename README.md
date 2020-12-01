@@ -1,5 +1,12 @@
 # Deep Learning For Java (DL4J)
 
+## Definition
+
+**Deep Learning 4 java** est un framework open source (licence apache) qui permet de construire, entrainer et tester une grande diversite d'algorithmes de Deep Learning (depuis les reseaux standard, jusqu'aux reseau concolutionels, en passant par des architectures plus complexes.
+
+Il se base sur sa structure de donnees (Nd4j) permettant d'effectuer
+
+
 # Initialisation du projet
 
 * Creation d'un projet Maven
