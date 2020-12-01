@@ -4,7 +4,18 @@
 
 **Deep Learning 4 java** est un framework open source (licence apache) qui permet de construire, entrainer et tester une grande diversite d'algorithmes de Deep Learning (depuis les reseaux standard, jusqu'aux reseau concolutionels, en passant par des architectures plus complexes.
 
-Il se base sur sa structure de donnees (Nd4j) permettant d'effectuer
+Il se base sur sa structure de donnees (Nd4j) permettant d'effectuer les operations de l'algebres lineaires sur les architectures massivement paralleles GPU et les architectures distribuees.
+
+**Nd4j** utilise du code natif (Cuda), et alloue de l'espace or du tas Java. Ceci est imperativement a prendre en compte lorsque la volumetrie des donnees est importante.
+
+DL4J utilise **DataVec** pour la vectorisation et la transformation des donnes.
+
+## But de l'application
+
+Le but est de creer un modele d'entrainement supervise a l'aide du data set Iris. Le data set fournis 120 instances (120 lignes) d'exemples de donnees de fleurs, classees en 3 types de fleurs et pour chaque type de fleurs nous avons 4 carateristiques (SepalLength, SepalWidth, PetalLength et PetalWidth
+
+
+
 
 
 # Initialisation du projet
