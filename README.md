@@ -16,7 +16,19 @@ Le but est de creer un modele d'entrainement supervise a l'aide du dataset Iris.
 
 
 <img src="src/main/resources/images/Iris-setosa.png"  width="120" height="120"><img src="src/main/resources/images/Iris-versicolor.png"  width="120" height="120"><img src="src/main/resources/images/Iris-virginica.png"  width="120" height="120">
-</div>
+
+* Modele
+
+<img src="src/main/resources/images/model.png"  width="400" height="400">
+
+## Description du dataset (iris-train.csv)
+
+1. La 1er colonne correspond au sepalLength
+2. La 2eme au sepalWidth
+3. La 3eme au petalLength
+4. La 4eme au petalWidth
+5. La 5eme correspond au type de fleurs (0 pour setosa, 1 pour versicolor et 2 pour virginica)
+
 
 
 # Initialisation du projet
