@@ -14,7 +14,7 @@ DL4J utilise **DataVec** pour la vectorisation et la transformation des donnes.
 
 Le but est de creer un modele d'entrainement supervise a l'aide du dataset Iris. Le dataset fournis 120 instances (120 lignes) d'exemples de donnees de fleurs, classees en 3 types de fleurs (iris-setosa, iris-versicolor et iris virginica) et pour chaque type de fleurs nous avons 4 carateristiques (SepalLength, SepalWidth, PetalLength et PetalWidth)
 
-!(iris-setosa)[images/Iris-setosa.png]
+!(iris-setosa)[ressourcces/images/Iris-setosa.png]
 
 
 
