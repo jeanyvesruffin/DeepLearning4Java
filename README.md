@@ -58,7 +58,7 @@ La courbe sigmoide genere par transformation affine une partie des courbes logis
 En theorie des probabilites, la sortie de la fonction softmax peut être utilisee pour representer une loi categorielle – c’est-a-dire une loi de probabilite sur K differents resultats possibles.
 La fonction softmax est egalement connue pour être utilisee dans diverses methodes de classification en classes multiples, par exemple dans le cas de reseaux de neurones artificiels.
 
-Retropropagation du gradient.Le principe est que l'on donne des exemples dont on connait la sortie. La sortie predite moins la sortie relle nous permet de determiner l'erreur (un delta). Il faut minimiser l'erreur en utilisant la fonction MearnSquaredError, cad, l'erreur l'erreur quadratique.
+* Retropropagation du gradient (fonction MearnSquaredError et Optimiser: ADAM). Le principe est que l'on donne des exemples dont on connait la sortie. La sortie predite moins la sortie relle nous permet de determiner l'erreur (un delta). Il faut minimiser l'erreur en utilisant la fonction MearnSquaredError, cad, l'erreur quadratique.
 
 >En statistiques, l’erreur quadratique moyenne d’un estimateur d’un parametre de dimension 1 (mean squared error) est une mesure caracterisant la « precision » de cet estimateur. Elle est plus souvent appelee « erreur quadratique » (« moyenne » etant sous-entendu) ; elle est parfois appelee aussi « risque quadratique ».
 
@@ -67,10 +67,7 @@ Retropropagation du gradient.Le principe est que l'on donne des exemples dont on
 Ce principe fonde les methodes de type algorithme du gradient, qui sont efficacement utilisees dans des reseaux de neurones multicouches comme les perceptrons multicouches. L'algorithme du gradient a pour but de converger de maniere iterative vers une configuration optimisee des poids synaptiques. Cet etat peut être un minimum local de la fonction a optimiser et idealement, un minimum global de cette fonction (dite fonction de coût).
 Normalement, la fonction de coût est non lineaire au regard des poids synaptiques. Elle dispose egalement d'une borne inferieure et moyennant quelques precautions lors de l'apprentissage, les procedures d'optimisation finissent par aboutir a une configuration stable au sein du reseau de neurones.
 
-
-
-
-
+* Vitesse d'apprentissage : Learning Rate à la valeur de 0.001.
 
 
 # Initialisation du projet
