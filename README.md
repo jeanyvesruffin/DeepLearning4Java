@@ -294,5 +294,5 @@ for (int i = 0; i < numEpochs; i++) {
 
 Executer votre application est appeler dans votre navigateur l'adresse url localhost:9000
 
-<img src="src/main/resources/images/ServerUI.bmp" width="400" height="400">
+<img src="src/main/resources/images/ServerUI.bmp">
  
