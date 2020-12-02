@@ -49,7 +49,7 @@ Nous utiliserons plusieurs parametrage, par exemple pour :
 
 * La couche masquee nous utiliserons une fonction d'activation de sigmoid:
 
->En mathematiques, la fonction sigmoide (dite aussi courbe en S1) represente la fonction de repartition de la loi logistique. Elle est souvent utilisee dans les reseaux de neurones parce qu'elle est derivable, ce qui est une contrainte pour l'algorithme de retropropagation de Werbos. La forme de la derivee de sa fonction inverse est extremement simple et facile a calculer, ce qui ameliore les performances des algorithmes.
+>En mathematiques, la fonction sigmoide (dite aussi courbe en S) represente la fonction de repartition de la loi logistique. Elle est souvent utilisee dans les reseaux de neurones parce qu'elle est derivable, ce qui est une contrainte pour l'algorithme de retropropagation de Werbos. La forme de la derivee de sa fonction inverse est extremement simple et facile a calculer, ce qui ameliore les performances des algorithmes.
 La courbe sigmoide genere par transformation affine une partie des courbes logistiques et en est donc un representant privilegie.
 
 * pour la couche de sortie nous utiliserons une fonction d'activation de softMax. Nous permettant de nous donner la probabilite que l'exemple fournis appartiens bien a une classe precise (type d'iris), si l'on fait la sommes des sortie celle-ci sera egale a 1.
@@ -58,7 +58,7 @@ La courbe sigmoide genere par transformation affine une partie des courbes logis
 En theorie des probabilites, la sortie de la fonction softmax peut etre utilisee pour representer une loi categorielle c'est-a-dire une loi de probabilite sur K differents resultats possibles.
 La fonction softmax est egalement connue pour etre utilisee dans diverses methodes de classification en classes multiples, par exemple dans le cas de reseaux de neurones artificiels.
 
-* Retropropagation du gradient (fonction MearnSquaredError et Optimiser: ADAM). Le principe est que l'on donne des exemples dont on connait la sortie. La sortie predite moins la sortie relle nous permet de determiner l'erreur (un delta). Il faut minimiser l'erreur en utilisant la fonction MearnSquaredError, cad, l'erreur quadratique.
+* Retropropagation du gradient (fonction MearnSquaredError et Optimiser: ADAM). Le principe est que l'on donne des exemples dont on connait la sortie. La sortie predite moins la sortie reelle nous permet de determiner l'erreur (un delta). Il faut minimiser l'erreur en utilisant la fonction MearnSquaredError, cad, l'erreur quadratique.
 
 >En statistiques, l'erreur quadratique moyenne  d'un estimateur d'un parametre de dimension 1 (mean squared error) est une mesure caracterisant la precision de cet estimateur. Elle est plus souvent appelee erreur quadratique  (moyenne etant sous-entendu) ; elle est parfois appelee aussi  risque quadratique.
 
@@ -67,7 +67,7 @@ La fonction softmax est egalement connue pour etre utilisee dans diverses method
 Ce principe fonde les methodes de type algorithme du gradient, qui sont efficacement utilisees dans des reseaux de neurones multicouches comme les perceptrons multicouches. L'algorithme du gradient a pour but de converger de maniere iterative vers une configuration optimisee des poids synaptiques. Cet etat peut etre un minimum local de la fonction a optimiser et idealement, un minimum global de cette fonction (dite fonction de cout).
 Normalement, la fonction de cout est non lineaire au regard des poids synaptiques. Elle dispose egalement d'une borne inferieure et moyennant quelques precautions lors de l'apprentissage, les procedures d'optimisation finissent par aboutir a une configuration stable au sein du reseau de neurones.
 
-* Vitesse d'apprentissage : Learning Rate � la valeur de 0.001.
+* Vitesse d'apprentissage : Learning Rate aura la valeur de 0.001.
 
 ## Description de l'application
 
@@ -268,11 +268,11 @@ Entrainement du modele
 
 Cette matrice correspondant a la 1er feature (1er ligne) ayant en entree les valeurs 5.1, 3.5, 1.4 et 0.2 et en sortie 1,0,0 (cela represente l'etat des sortie, ici le 1 correspond au 1er type d'iris..)
 
-Si l'on change la taille du batchSize a 30 vs 1 nous pouvons constater que l'organisation du dataSet est grouper par 30.
+Si l'on change la taille du batchSize a 30 vs 1 nous pouvons constater que l'organisation du dataSet sera groupe par 30.
 
 ## Entrainement du modele
 
-Le nombre d'epochs correspond au nombre de fois que l'entrainement vas etre effectue (ici 10 fois). cela correspond au cycle d'apprentissage pour optimisation.
+Le nombre d'epochs correspond au nombre de fois que l'entrainement vas etre effectue (ici 500 fois). cela correspond au cycle d'apprentissage pour optimisation.
 
 Pour controler l'evolution de l'apprentissage nous pouvons utiliser DL4J avec UIserver.
 
@@ -289,6 +289,82 @@ for (int i = 0; i < numEpochs; i++) {
 	multiLayerNetwork.fit(dataSetIteratorTrain);
 }
 ```
+
+## Evaluation du modele
+
+```java
+// Evaluation du modele (avec iris-test.csv)
+System.out.println("Evaluation du modele");
+File fileTest = new ClassPathResource("irisTest.csv").getFile();
+RecordReader recordReaderTest = new CSVRecordReader();
+recordReaderTest.initialize(new FileSplit(fileTest));
+DataSetIterator dataSetIteratorTest = new RecordReaderDataSetIterator(recordReaderTest, batchSize, classIndex,
+		outputSize);
+
+Evaluation evaluation = new Evaluation();
+
+while (dataSetIteratorTest.hasNext()) {
+	DataSet dataSetTest = dataSetIteratorTest.next();
+	INDArray features = dataSetTest.getFeatures();
+	INDArray targetLabels = dataSetTest.getLabels();
+	INDArray predictedLabels = multiLayerNetwork.output(features);
+	evaluation.eval(predictedLabels, targetLabels);
+}
+System.out.println(evaluation.stats());
+```
+```cmd
+
+========================Evaluation Metrics========================
+ # of classes:    3
+ Accuracy:        1,0000
+ Precision:       1,0000
+ Recall:          1,0000
+ F1 Score:        1,0000
+Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+
+
+=========================Confusion Matrix=========================
+ 0 1 2
+-------
+10 0 0 | 0 = 0
+ 010 0 | 1 = 1
+ 0 010 | 2 = 2
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+```
+
+Cette evaluation nous montre que nos predictions sont correctes à 100%.
+
+Si l'on change le nombre d'epochs que l'on passe a 30.
+
+```cmd
+
+========================Evaluation Metrics========================
+ # of classes:    3
+ Accuracy:        0,8333
+ Precision:       0,8333
+ Recall:          0,8889
+ F1 Score:        0,8222
+Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+
+
+=========================Confusion Matrix=========================
+ 0 1 2
+-------
+10 0 0 | 0 = 0
+ 0 5 0 | 1 = 1
+ 0 510 | 2 = 2
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+```
+
+Nous pouvons constater alors que nos predictions sont correcte a 83% seulement. 
+Pour la classe 2 la moitier est correct l'utre se trompe pour etre sur le type 3.
+
+## Predictions pour une donnee jamais connue
+
 
 # Execution du modele et utilisation de l'interface DL4J
 
