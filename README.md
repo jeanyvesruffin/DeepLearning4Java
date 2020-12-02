@@ -32,7 +32,7 @@ Le but est de creer un modele d'entrainement supervise a l'aide du dataset Iris.
 
 Le modele de reseau de neuronnes que nous allons creer, et un multilayer perceptron.
 
->Un multilayer perceptron ou perceptron multicouche (multilayer perceptron MLP) est un type de reseau neuronal artificiel organise en plusieurs couches au sein desquelles une information circule de la couche d'entree vers la couche de sortie uniquement ; il s'agit donc d'un reseau a propagation directe (feedforward). Chaque couche est constituee d'un nombre variable de neurones, les neurones de la derniere couche (dite « de sortie ») etant les sorties du systeme global.
+>Un multilayer perceptron ou perceptron multicouche (multilayer perceptron MLP) est un type de reseau neuronal artificiel organise en plusieurs couches au sein desquelles une information circule de la couche d'entree vers la couche de sortie uniquement ; il s'agit donc d'un reseau a propagation directe (feedforward). Chaque couche est constituee d'un nombre variable de neurones, les neurones de la derniere couche (dite ï¿½ de sortie ï¿½) etant les sorties du systeme global.
 
 
 **Modele MLP**
@@ -49,25 +49,25 @@ Nous utiliserons plusieurs parametrage, par exemple pour :
 
 * La couche masquee nous utiliserons une fonction d'activation de sigmoid:
 
->En mathematiques, la fonction sigmoide (dite aussi courbe en S1) represente la fonction de repartition de la loi logistique. Elle est souvent utilisee dans les reseaux de neurones parce qu'elle est derivable, ce qui est une contrainte pour l'algorithme de retropropagation de Werbos. La forme de la derivee de sa fonction inverse est extrêmement simple et facile a calculer, ce qui ameliore les performances des algorithmes.
+>En mathematiques, la fonction sigmoide (dite aussi courbe en S1) represente la fonction de repartition de la loi logistique. Elle est souvent utilisee dans les reseaux de neurones parce qu'elle est derivable, ce qui est une contrainte pour l'algorithme de retropropagation de Werbos. La forme de la derivee de sa fonction inverse est extrï¿½mement simple et facile a calculer, ce qui ameliore les performances des algorithmes.
 La courbe sigmoide genere par transformation affine une partie des courbes logistiques et en est donc un representant privilegie.
 
 * pour la couche de sortie nous utiliserons une fonction d'activation de softMax. Nous permettant de nous donner la probabilite que l'exemple fournis appartiens bien a une classe precise (type d'iris), si l'on fait la sommes des sortie celle-ci sera egale a 1.
 
 >En mathematiques, la fonction softmax, ou fonction exponentielle normalisee, est une generalisation de la fonction logistique qui prend en entree un vecteur.
-En theorie des probabilites, la sortie de la fonction softmax peut être utilisee pour representer une loi categorielle – c’est-a-dire une loi de probabilite sur K differents resultats possibles.
-La fonction softmax est egalement connue pour être utilisee dans diverses methodes de classification en classes multiples, par exemple dans le cas de reseaux de neurones artificiels.
+En theorie des probabilites, la sortie de la fonction softmax peut ï¿½tre utilisee pour representer une loi categorielle ï¿½ cï¿½est-a-dire une loi de probabilite sur K differents resultats possibles.
+La fonction softmax est egalement connue pour ï¿½tre utilisee dans diverses methodes de classification en classes multiples, par exemple dans le cas de reseaux de neurones artificiels.
 
 * Retropropagation du gradient (fonction MearnSquaredError et Optimiser: ADAM). Le principe est que l'on donne des exemples dont on connait la sortie. La sortie predite moins la sortie relle nous permet de determiner l'erreur (un delta). Il faut minimiser l'erreur en utilisant la fonction MearnSquaredError, cad, l'erreur quadratique.
 
->En statistiques, l’erreur quadratique moyenne d’un estimateur d’un parametre de dimension 1 (mean squared error) est une mesure caracterisant la « precision » de cet estimateur. Elle est plus souvent appelee « erreur quadratique » (« moyenne » etant sous-entendu) ; elle est parfois appelee aussi « risque quadratique ».
+>En statistiques, lï¿½erreur quadratique moyenne dï¿½un estimateur dï¿½un parametre de dimension 1 (mean squared error) est une mesure caracterisant la ï¿½ precision ï¿½ de cet estimateur. Elle est plus souvent appelee ï¿½ erreur quadratique ï¿½ (ï¿½ moyenne ï¿½ etant sous-entendu) ; elle est parfois appelee aussi ï¿½ risque quadratique ï¿½.
 
 
->En statistiques, la retropropagation du gradient est une methode pour calculer le gradient de l'erreur pour chaque neurone d'un reseau de neurones, de la derniere couche vers la premiere. De façon abusive, on appelle souvent technique de retropropagation du gradient l'algorithme classique de correction des erreurs base sur le calcul du gradient grâce a la retropropagation et c'est cette methode qui est presentee ici. En verite, la correction des erreurs peut se faire selon d'autres methodes, en particulier le calcul de la derivee seconde. Cette technique consiste a corriger les erreurs selon l'importance des elements qui ont justement participe a la realisation de ces erreurs. Dans le cas des reseaux de neurones, les poids synaptiques qui contribuent a engendrer une erreur importante se verront modifies de maniere plus significative que les poids qui ont engendre une erreur marginale.
-Ce principe fonde les methodes de type algorithme du gradient, qui sont efficacement utilisees dans des reseaux de neurones multicouches comme les perceptrons multicouches. L'algorithme du gradient a pour but de converger de maniere iterative vers une configuration optimisee des poids synaptiques. Cet etat peut être un minimum local de la fonction a optimiser et idealement, un minimum global de cette fonction (dite fonction de coût).
-Normalement, la fonction de coût est non lineaire au regard des poids synaptiques. Elle dispose egalement d'une borne inferieure et moyennant quelques precautions lors de l'apprentissage, les procedures d'optimisation finissent par aboutir a une configuration stable au sein du reseau de neurones.
+>En statistiques, la retropropagation du gradient est une methode pour calculer le gradient de l'erreur pour chaque neurone d'un reseau de neurones, de la derniere couche vers la premiere. De faï¿½on abusive, on appelle souvent technique de retropropagation du gradient l'algorithme classique de correction des erreurs base sur le calcul du gradient grï¿½ce a la retropropagation et c'est cette methode qui est presentee ici. En verite, la correction des erreurs peut se faire selon d'autres methodes, en particulier le calcul de la derivee seconde. Cette technique consiste a corriger les erreurs selon l'importance des elements qui ont justement participe a la realisation de ces erreurs. Dans le cas des reseaux de neurones, les poids synaptiques qui contribuent a engendrer une erreur importante se verront modifies de maniere plus significative que les poids qui ont engendre une erreur marginale.
+Ce principe fonde les methodes de type algorithme du gradient, qui sont efficacement utilisees dans des reseaux de neurones multicouches comme les perceptrons multicouches. L'algorithme du gradient a pour but de converger de maniere iterative vers une configuration optimisee des poids synaptiques. Cet etat peut ï¿½tre un minimum local de la fonction a optimiser et idealement, un minimum global de cette fonction (dite fonction de coï¿½t).
+Normalement, la fonction de coï¿½t est non lineaire au regard des poids synaptiques. Elle dispose egalement d'une borne inferieure et moyennant quelques precautions lors de l'apprentissage, les procedures d'optimisation finissent par aboutir a une configuration stable au sein du reseau de neurones.
 
-* Vitesse d'apprentissage : Learning Rate à la valeur de 0.001.
+* Vitesse d'apprentissage : Learning Rate ï¿½ la valeur de 0.001.
 
 ## Description de l'application
 
@@ -75,9 +75,14 @@ L'application devra avoir plusieurs onglets (Front en javaFx).
 
 L'application nous permettra de creer un modele (Create Model), charger les donnees (Load data) necessaire pour  entrainer le model, entrainer le modele (Train Model) 80% du dataset, evaluer le modele (Evaluate Model) 20% du dataset, faire les predictions (Predict) et enfin la sauvegarde du model (save Model) et le chargement du model (load Model).
 
+Enfin, un formulaire sera present pour renseigner les observations en input et a l'aide d'un bouton prediction nous retournerra le type de fleur.
+Un onglet input Data nous retournera le dataset, un onglet console nous retournera la precision de l'evaluation ainsi qu'une matrice de confusion.
+Un onglet de consultation Web de DL4J ou nous pourrons consulter plusieurs informations.
 
 
-# Initialisation du projet
+# Creation de l'application
+
+## Initialisation du projet
 
 * Creation d'un projet Maven
 
@@ -108,6 +113,12 @@ L'application nous permettra de creer un modele (Create Model), charger les donn
 		<dependency>
 			<groupId>org.nd4j</groupId>
 			<artifactId>nd4j-native-platform</artifactId>
+			<version>1.0.0-beta3</version>
+		</dependency>
+				<!--ND4J Natif pour GPU -->
+		<dependency>
+			<groupId>org.nd4j</groupId>
+			<artifactId>nd4j-cuda-9.2-platform</artifactId>
 			<version>1.0.0-beta3</version>
 		</dependency>
 		<!--User Interface de DL4J -->
@@ -147,4 +158,141 @@ git remote add origin https://github.com/jeanyvesruffin/DeepLearning4Java.git
 git push -u origin main
 ```
 
+## Creation du modele.
 
+Configuration du modele a l'aide de MLP (MultiLayer Perceptron).
+
+````java
+// Configuration du modele MultiLayerPerceptron
+// le seed correspondra a la valeur aleatoire qui sera utilise pour representer
+// le poids de chaque neuronne
+// Adam permet de corriger l'erreur de sortie, cad, l'erreur resultant de la
+// sortie reelle - sortie attendue
+// Puis nous ajoutons les couches
+// couche 0 (layer(0)) est dite fully connector (DenseLayer), car la sortie de
+// chaque neuronne de la couche deviens l'entree de tous les neuronne de la
+// couche suivante.
+
+double learningRate = 0.001;
+int inputSize = 4;
+int numHiddenNodes = 10;
+int outputSize = 3;
+
+MultiLayerConfiguration multiLayerConfiguration = new NeuralNetConfiguration
+	.Builder()
+	.seed(123)
+	.updater(new Adam(learningRate))
+		.list()
+		.layer(0,	new DenseLayer
+					.Builder()
+					.nIn(inputSize)
+					.nOut(numHiddenNodes)
+					.activation(Activation.SIGMOID)
+					.build()
+				)
+		.layer(1,	new OutputLayer
+					.Builder()
+					.nIn(numHiddenNodes)
+					.nOut(outputSize)
+					.lossFunction(LossFunctions
+									.LossFunction
+									.MEAN_SQUARED_LOGARITHMIC_ERROR
+									)
+					.activation(Activation.SOFTMAX)
+					.build()
+				)
+		.build();
+
+// Creation du modele
+MultiLayerNetwork multiLayerNetwork = new MultiLayerNetwork(multiLayerConfiguration);
+multiLayerNetwork.init();
+
+```
+
+## Lecture des donnees a partir du dataset
+
+DataVect possede des methodes permettant de lire des fichiers csv.
+
+Le batchSize permet de dimensionner le nombre de ligne, du jeu de donnees, qui seront utilisees pour faire le calcule des poids des connexions neuronnale.
+
+Si batchSize = 1 alors l'algorithme d'entrainement prendra chaque ligne du fichier CSV qui seront analysees puis passera a la suivante afin de minimiser l'erreur.
+
+
+```java
+
+// Lecture du fichier CSV et Entrainement du modele
+System.out.println("Entrainement du modele");
+
+File fileTrain = new ClassPathResource("iris-train.csv").getFile();
+RecordReader recordReaderTrain = new CSVRecordReader();
+recordReaderTrain.initialize(new FileSplit(fileTrain));
+
+// organisation dans un dataset Iterator
+int batchSize = 1;
+int classIndex = 4;
+
+DataSetIterator dataSetIteratorTrain = new RecordReaderDataSetIterator(recordReaderTrain, batchSize, classIndex,outputSize);
+
+```
+
+Creation et visualisation du dataSetIterator
+
+```java
+
+// Lecture du fichier CSV et Entrainement du modele
+System.out.println("Entrainement du modele");
+File fileTrain = new ClassPathResource("iris-train.csv").getFile();
+RecordReader recordReaderTrain = new CSVRecordReader();
+recordReaderTrain.initialize(new FileSplit(fileTrain));
+// organisation dans un dataset Iterator
+int batchSize = 1;
+int classIndex = 4;
+DataSetIterator dataSetIteratorTrain = new RecordReaderDataSetIterator(recordReaderTrain, batchSize, classIndex,
+		outputSize);
+// Parcour du dataset batch par batch
+
+while(dataSetIteratorTrain.hasNext()) {
+	System.out.println("------------------------------------------------------------");
+	DataSet dataSet = dataSetIteratorTrain.next();
+	System.out.println(dataSet.getFeatures());
+	System.out.println(dataSet.getLabels());
+}
+```
+
+```java
+Entrainement du modele
+------------------------------------------------------------
+[[    5.1000,    3.5000,    1.4000,    0.2000]]
+[[    1.0000,         0,         0]]
+```
+
+Cette matrice correspondant a la 1er feature (1er ligne) ayant en entree les valeurs 5.1, 3.5, 1.4 et 0.2 et en sortie 1,0,0 (cela represente l'etat des sortie, ici le 1 correspond au 1er type d'iris..)
+
+Si l'on change la taille du batchSize a 30 vs 1 nous pouvons constater que l'organisation du dataSet est grouper par 30.
+
+## Entrainement du modele
+
+Le nombre d'epochs correspond au nombre de fois que l'entrainement vas etre effectue (ici 10 fois). cela correspond au cycle d'apprentissage pour optimisation.
+
+Pour controler l'evolution de l'apprentissage nous pouvons utiliser DL4J avec UIserver.
+
+```java
+// Demarrage du serveur de monitoring du processus d'apprentissage avec UIServer utilise le port 9000 par defaut
+UIServer uiServer=UIServer.getInstance();
+InMemoryStatsStorage inMemoryStatsStorage = new InMemoryStatsStorage();
+uiServer.attach(inMemoryStatsStorage);
+
+multiLayerNetwork.setListeners(new StatsListener(inMemoryStatsStorage));
+
+int numEpochs = 500;
+for (int i = 0; i < numEpochs; i++) {
+	multiLayerNetwork.fit(dataSetIteratorTrain);
+}
+```
+
+# Execution du modele et utilisation de l'interface DL4J
+
+Executer votre application est appeler dans votre navigateur l'adresse url localhost:9000
+
+<img src="src/main/resources/images/ServerUI.bmp" width="400" height="400">
+ 
