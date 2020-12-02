@@ -162,7 +162,7 @@ git push -u origin main
 
 Configuration du modele a l'aide de MLP (MultiLayer Perceptron).
 
-````java
+```java
 // Configuration du modele MultiLayerPerceptron
 // le seed correspondra a la valeur aleatoire qui sera utilise pour representer
 // le poids de chaque neuronne
