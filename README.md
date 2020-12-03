@@ -363,7 +363,12 @@ Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
 Nous pouvons constater alors que nos predictions sont correcte a 83% seulement. 
 Pour la classe 2 la moitier est correct l'utre se trompe pour etre sur le type 3.
 
-## Predictions pour une donnee jamais connue
+## Predictions
+
+
+
+
+
 
 
 # Execution du modele et utilisation de l'interface DL4J

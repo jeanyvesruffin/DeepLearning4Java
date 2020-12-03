@@ -43,7 +43,7 @@ public class IrisApp {
 		int outputSize = 3;
 		int batchSize = 1;
 		int classIndex = 4;
-		int numEpochs = 30;
+		int numEpochs = 60;
 
 		System.out.println("Creation du modele");
 		MultiLayerConfiguration multiLayerConfiguration = new NeuralNetConfiguration.Builder().seed(1234)
