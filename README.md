@@ -365,9 +365,101 @@ Pour la classe 2 la moitier est correct l'utre se trompe pour etre sur le type 3
 
 ## Predictions
 
+On initialise une matice de double.
+
+```java
+INDArray inputData = Nd4j.create(new double[][] { { 5.1, 3.5, 1.4, 0.2 }, { 4.9, 3.0, 1.4, 0.2 },
+{ 6.7, 3.1, 4.4, 1.4 }, { 5.6, 3.0, 4.5, 1.5 }, { 6.0, 3.0, 4.5, 1.8 }, { 6.9, 3.1, 5.4, 2.1 } });
+```
+
+Puis nous demandons la prediction de ce jeu
+
+```java
+INDArray output = multiLayerNetwork.output(inputData);
+System.out.println(output);
+
+```
+```cmd
+========================Evaluation Metrics========================
+ # of classes:    3
+ Accuracy:        1,0000
+ Precision:       1,0000
+ Recall:          1,0000
+ F1 Score:        1,0000
+Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
 
 
+=========================Confusion Matrix=========================
+ 0 1 2
+-------
+10 0 0 | 0 = 0
+ 010 0 | 1 = 1
+ 0 010 | 2 = 2
 
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+Prédictions
+[[    0.9370,    0.0599,    0.0031], 
+ [    0.9127,    0.0829,    0.0043], 
+ [    0.0586,    0.7366,    0.2048], 
+ [    0.0143,    0.4320,    0.5537], 
+ [    0.0105,    0.3866,    0.6029], 
+ [    0.0034,    0.2102,    0.7865]]
+
+```
+
+La console nous indique les predictions suivantes:
+
+- le 1er jeu de donnees nous indique qu'il y a une probabilite de 93% pour que ce soit l'iris index 0
+- le 2eme jeu de donnees nous indique qu'il y a une probabilite de 91% pour que ce soit l'iris index 0 
+- le 3eme jeu de donnees nous indique qu'il y a une probabilite de 73% pour que ce soit l'iris index 1
+- le 4eme jeu de donnees nous indique qu'il y a une probabilite de 55% pour que ce soit l'iris index 2 et a 43% pour que ce soit l'iris index 1
+- le 5eme jeu de donnees nous indique qu'il y a une probabilite de 60% pour que ce soit l'iris index 2
+- le 6eme jeu de donnees nous indique qu'il y a une probabilite de 78% pour que ce soit l'iris index 2
+
+
+Nous allons maintenant determiner l'index de l'iris de la probabilite maximum.
+
+```java
+int [] classesIris = output.argMax(1).toIntVector();
+for (int i = 0; i < classesIris.length; i++) {
+	System.out.println("Classes d'iris :" + classesIris[i]);
+}
+```
+
+```cmd
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+Prédictions
+Classes d'iris :0
+Classes d'iris :0
+Classes d'iris :1
+Classes d'iris :2
+Classes d'iris :2
+Classes d'iris :2
+```
+
+En utilisant un tableau de correspondance nous obtenons:
+
+```java
+String [] labels = {"Iris-setosa", "Iris-versicolor","Iris-virginica"};
+int [] classesIris = output.argMax(1).toIntVector();
+for (int i = 0; i < classesIris.length; i++) {
+	System.out.println("Classe d'iris :" + labels[classesIris[i]]);
+}
+```
+```cmd
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+Prédictions
+Classe d'iris :Iris-setosa
+Classe d'iris :Iris-setosa
+Classe d'iris :Iris-versicolor
+Classe d'iris :Iris-virginica
+Classe d'iris :Iris-virginica
+Classe d'iris :Iris-virginica
+
+```
 
 
 
