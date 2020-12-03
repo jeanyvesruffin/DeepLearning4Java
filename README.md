@@ -1,7 +1,28 @@
+
+
 # Deep Learning For Java (DL4J)
 
 [https://deeplearning4j.konduit.ai/](https://deeplearning4j.konduit.ai/)
 
+<!-- TOC -->
+
+- [Deep Learning For Java (DL4J)](#deep-learning-for-java-dl4j)
+    - [Definition](#definition)
+    - [But de l'application](#but-de-lapplication)
+    - [Description du dataset (iris-train.csv)](#description-du-dataset-iris-traincsv)
+    - [Retour sur le modele](#retour-sur-le-modele)
+    - [Description de l'application](#description-de-lapplication)
+- [Creation de l'application](#creation-de-lapplication)
+    - [Initialisation du projet](#initialisation-du-projet)
+    - [Creation du modele.](#creation-du-modele)
+    - [Lecture des donnees a partir du dataset](#lecture-des-donnees-a-partir-du-dataset)
+    - [Entrainement du modele](#entrainement-du-modele)
+    - [Evaluation du modele](#evaluation-du-modele)
+    - [Predictions](#predictions)
+    - [Sauvegarde et chargement de l'evaluation](#sauvegarde-et-chargement-de-levaluation)
+- [Execution du modele et utilisation de l'interface DL4J](#execution-du-modele-et-utilisation-de-linterface-dl4j)
+
+<!-- /TOC -->
 
 ## Definition
 
