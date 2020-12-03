@@ -15,12 +15,12 @@ import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.ui.api.UIServer;
 import org.deeplearning4j.ui.stats.StatsListener;
 import org.deeplearning4j.ui.storage.InMemoryStatsStorage;
+import org.deeplearning4j.util.ModelSerializer;
 import org.nd4j.evaluation.classification.Evaluation;
 import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.DataSet;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
-import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.io.ClassPathResource;
 import org.nd4j.linalg.learning.config.Adam;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
@@ -45,8 +45,6 @@ public class IrisApp {
 		int batchSize = 1;
 		int classIndex = 4;
 		int numEpochs = 60;
-		String [] labels = {"Iris-setosa", "Iris-versicolor","Iris-virginica"};
-
 		System.out.println("Creation du modele");
 		MultiLayerConfiguration multiLayerConfiguration = new NeuralNetConfiguration.Builder().seed(1234)
 				.updater(new Adam(learningRate)).list()
@@ -113,16 +111,13 @@ public class IrisApp {
 			evaluation.eval(predictedLabels, targetLabels);
 		}
 		System.out.println(evaluation.stats());
-		System.out.println("Prédictions");
-
-		INDArray inputData = Nd4j.create(new double[][] { { 5.1, 3.5, 1.4, 0.2 }, { 4.9, 3.0, 1.4, 0.2 },
-				{ 6.7, 3.1, 4.4, 1.4 }, { 5.6, 3.0, 4.5, 1.5 }, { 6.0, 3.0, 4.5, 1.8 }, { 6.9, 3.1, 5.4, 2.1 } });
-		INDArray output = multiLayerNetwork.output(inputData);
 		
-		int [] classesIris = output.argMax(1).toIntVector();
-		for (int i = 0; i < classesIris.length; i++) {
-			System.out.println("Classe d'iris :" + labels[classesIris[i]]);
-		}
+		ModelSerializer.writeModel(multiLayerNetwork, "irisModel.zip", true);
+		
+		
+		
+		
+
 		
 		// System.out.println(output);
 		
